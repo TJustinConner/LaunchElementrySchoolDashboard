@@ -1,14 +1,14 @@
 const express = require("express");
-const cors = require('cors')
+const cors = require("cors");
 
 const app = express();
-app.use(cors())
+app.use(cors());
 const port = 8000;
 
 var admin = require("firebase-admin");
-var serviceAccount = require("./tj-dashboard-9b5d7-firebase-adminsdk-grdgm-7fbed6cee1");
+var serviceAccount = require("./serviceAccountKey.json");
 admin.initializeApp({
-  credential: admin.credential.cert(serviceAccount)
+  credential: admin.credential.cert(serviceAccount),
 });
 const db = admin.firestore();
 
@@ -17,28 +17,51 @@ app.get("/", (req, res) => {
 });
 
 app.get("/student/student-directory/retrieve", (req, res) => {
-  const studentRef = db.collection('students')
+  const studentRef = db.collection("students");
   let temp = [];
-  studentRef.get().then((resp) => {
-    resp.forEach((doc) => {
-      temp.push(doc.data());
+  studentRef
+    .get()
+    .then((resp) => {
+      resp.forEach((doc) => {
+        temp.push(doc.data());
+      });
+    })
+    .then(() => {
+      console.log(temp);
+      res.send(temp);
     });
-  }).then(() => {
-    console.log(temp)
-    res.send(temp);
-  })
 });
 
 app.get("/student/teacher-directory/retrieve", (req, res) => {
-  const teacherRef = db.collection('teachers')
+  const teacherRef = db.collection("teachers");
   let temp = [];
-  teacherRef.get().then((resp) => {
-    resp.forEach((doc) => {
-      temp.push(doc.data());
+  teacherRef
+    .get()
+    .then((resp) => {
+      resp.forEach((doc) => {
+        temp.push(doc.data());
+      });
+    })
+    .then(() => {
+      res.send(temp);
     });
-  }).then(() => {
-    res.send(temp);
-  })
+});
+
+app.get("/student/calendar/retrieve", (req, res) => {
+  console.log("calendar fetch");
+
+  const calendarRef = db.collection("events");
+  let temp = [];
+  calendarRef
+    .get()
+    .then((resp) => {
+      resp.forEach((doc) => {
+        temp.push(doc.data());
+      });
+    })
+    .then(() => {
+      res.send(temp);
+    });
 });
 
 app.listen(port, () => {

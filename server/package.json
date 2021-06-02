@@ -9,6 +9,9 @@
   "author": "Kevin Liu",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.17.1"
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "firebase": "^8.6.3",
+    "firebase-admin": "^9.9.0"
   }
 }

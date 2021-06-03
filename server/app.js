@@ -64,6 +64,34 @@ app.get("/student/calendar/retrieve", (req, res) => {
     });
 });
 
+app.get('/admin/teacher-directory/add', (req, res) => {
+  const toAdd = {
+    first: req.query.first,
+    last: req.query.last,
+    contact: [req.query.phone,req.query.email]
+  }
+  return db.collection('teachers').doc(req.query.first+req.query.last)
+  .set(toAdd)
+})
+
+app.get('/admin/student-directory/add', (req, res) => {
+  const toAdd = {
+    first: req.query.first,
+    last: req.query.last,
+    contact: [req.query.phone,req.query.email]
+  }
+  return db.collection('students').doc(req.query.first+req.query.last)
+  .set(toAdd)
+})
+
+app.get('/admin/teacher-directory/remove', (req, res) => {
+  return db.collection('teachers').doc(req.query.first + req.query.last).delete()
+})
+
+app.get('/admin/student-directory/remove', (req, res) => {
+  return db.collection('students').doc(req.query.first + req.query.last).delete()
+})
+
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
 });

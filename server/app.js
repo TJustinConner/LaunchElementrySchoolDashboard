@@ -6,7 +6,7 @@ app.use(cors())
 const port = 8000;
 
 var admin = require("firebase-admin");
-var serviceAccount = require("./tj-dashboard-9b5d7-firebase-adminsdk-grdgm-7fbed6cee1");
+var serviceAccount = require("./elemdash-firebase-adminsdk-j3uhr-e3660c30a6.json");
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount)
 });
@@ -40,6 +40,34 @@ app.get("/student/teacher-directory/retrieve", (req, res) => {
     res.send(temp);
   })
 });
+
+app.get('/admin/teacher-directory/add', (req, res) => {
+  const toAdd = {
+    first: req.query.first,
+    last: req.query.last,
+    contact: [req.query.phone,req.query.email]
+  }
+  return db.collection('teachers').doc(req.query.first+req.query.last)
+  .set(toAdd)
+})
+
+app.get('/admin/student-directory/add', (req, res) => {
+  const toAdd = {
+    first: req.query.first,
+    last: req.query.last,
+    contact: [req.query.phone,req.query.email]
+  }
+  return db.collection('students').doc(req.query.first+req.query.last)
+  .set(toAdd)
+})
+
+app.get('/admin/teacher-directory/remove', (req, res) => {
+  return db.collection('teachers').doc(req.query.first + req.query.last).delete()
+})
+
+app.get('/admin/student-directory/remove', (req, res) => {
+  return db.collection('students').doc(req.query.first + req.query.last).delete()
+})
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);

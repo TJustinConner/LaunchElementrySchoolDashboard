@@ -4,6 +4,7 @@ const cors = require("cors");
 const app = express();
 app.use(cors());
 const port = 8000;
+app.use(express.json());
 
 var admin = require("firebase-admin");
 var serviceAccount = require("./serviceAccountKey.json");
@@ -62,6 +63,21 @@ app.get("/student/calendar/retrieve", (req, res) => {
     .then(() => {
       res.send(temp);
     });
+});
+
+app.post("/admin/edit-calendar/add-event", async (req, res) => {
+  console.log(req.body.id);
+  const resp = await db.collection("events").doc(req.body.id).set(req.body);
+
+  res.sendStatus(200);
+});
+
+app.delete("/admin/edit-calendar/delete-event", async (req, res) => {
+  const { id } = req.body;
+
+  const resp = await db.collection("events").doc(id).delete();
+
+  res.sendStatus(200);
 });
 
 app.listen(port, () => {

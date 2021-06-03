@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
 import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
-import bootstrapPlugin from "@fullcalendar/bootstrap";
-import { connected } from "process";
 
 function CalendarView() {
   const [data, setData] = useState([]);
@@ -39,9 +37,10 @@ function CalendarView() {
   const formatEvent = (res) => {
     return setCalEvent(
       res.map((e) => ({
-        title: e.name,
-        start: e.time[0]._seconds * 1000,
-        end: e.time[1]._seconds * 1000,
+        title: e.title,
+        start: e.start,
+        end: e.end,
+        detail: e.detail,
       }))
     );
   };
@@ -58,7 +57,7 @@ function CalendarView() {
       }}
     >
       <FullCalendar
-        plugins={[dayGridPlugin, bootstrapPlugin]}
+        plugins={[dayGridPlugin]}
         initialView="dayGridMonth"
         height="90vh"
         headerToolbar={headerFormat}

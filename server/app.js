@@ -66,7 +66,6 @@ app.get("/student/calendar/retrieve", (req, res) => {
 });
 
 app.post("/admin/edit-calendar/add-event", async (req, res) => {
-  console.log(req.body.id);
   const resp = await db.collection("events").doc(req.body.id).set(req.body);
 
   res.sendStatus(200);

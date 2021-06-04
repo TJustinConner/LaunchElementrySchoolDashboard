@@ -1,12 +1,21 @@
+import { Typography } from "@material-ui/core";
 
-
-export default function Student( { student } ) {
-    return(
-        <div>
-            <h2 align='center'>{student.first} {student.last}</h2>
-            <div align='left'>&nbsp;Grade: {student.grade}</div>
-            <div align='left'>&nbsp;Phone Number: {student.contact[0]}</div>
-            <div align='left'>&nbsp;Email: {student.contact[1]}</div>
-        </div>
-    );
+export default function Student({ student }) {
+  return (
+    <div>
+      <div style={{ height: "10px" }}></div>
+      <Typography align="center" style={{ fontSize: "20px" }}>
+        {student.first} {student.last}
+      </Typography>
+      <Typography style={{ fontSize: "15px", marginLeft: "5px" }}>
+        &nbsp;Grade: {student.grade}
+      </Typography>
+      <Typography style={{ fontSize: "15px", marginLeft: "5px" }}>
+        &nbsp;Phone Number: {student.contact[0]}
+      </Typography>
+      <Typography style={{ fontSize: "15px", marginLeft: "5px" }}>
+        &nbsp;Email: {student.contact[1]}
+      </Typography>
+    </div>
+  );
 }

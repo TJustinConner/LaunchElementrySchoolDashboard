@@ -32,7 +32,13 @@ function AdminNavbar() {
               justifyContent: "center",
             }}
           >
-            <Typography variant="h6">T.J School Dashboard</Typography>
+            <Typography variant="h6">TJ School Dashboard </Typography>
+            <img
+              src="./slug.png"
+              alt="slug picture"
+              width="50vw"
+              style={{ marginLeft: "10px" }}
+            />
           </div>
           <div
             style={{

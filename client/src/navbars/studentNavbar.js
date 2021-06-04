@@ -30,7 +30,7 @@ function StudentNavbar() {
               justifyContent: "center",
             }}
           >
-            <Typography variant="h6">T.J School Dashboard</Typography>
+            <Typography variant="h6">TJ School Dashboard</Typography>
           </div>
           <div
             style={{

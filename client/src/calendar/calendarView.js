@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
+import "@fontsource/roboto";
 
 function CalendarView() {
   const [data, setData] = useState([]);
@@ -56,13 +57,15 @@ function CalendarView() {
         marginTop: "2vh",
       }}
     >
-      <FullCalendar
-        plugins={[dayGridPlugin]}
-        initialView="dayGridMonth"
-        height="90vh"
-        headerToolbar={headerFormat}
-        events={calEvent}
-      />
+      <div style={{ fontFamily: "roboto" }}>
+        <FullCalendar
+          plugins={[dayGridPlugin]}
+          initialView="dayGridMonth"
+          height="90vh"
+          headerToolbar={headerFormat}
+          events={calEvent}
+        />
+      </div>
     </div>
   );
 }

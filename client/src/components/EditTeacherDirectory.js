@@ -56,9 +56,9 @@ export default function EditDirectory() {
       >
         <div style={{ display: "flex" }}>
           <Typography style={{ fontSize: "20px" }}>
-            Add to student directory:
+            Add to teacher directory:
           </Typography>
-          <EditPopup type="student" />
+          <EditPopup type="teacher" />
         </div>
       </div>
 

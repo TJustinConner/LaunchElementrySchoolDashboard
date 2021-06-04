@@ -111,6 +111,7 @@ function CalendarEdit() {
         marginLeft: "2vw",
         marginRight: "2vw",
         marginTop: "2vh",
+        fontFamily: "roboto",
       }}
     >
       <FullCalendar

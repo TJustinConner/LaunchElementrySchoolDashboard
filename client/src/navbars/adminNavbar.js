@@ -32,7 +32,7 @@ function AdminNavbar() {
               justifyContent: "center",
             }}
           >
-            <Typography variant="h6">TJ School Dashboard </Typography>
+            <Typography variant="h6">Thomas Jefferson ES Dashboard </Typography>
             <img
               src="./slug.png"
               alt="slug picture"

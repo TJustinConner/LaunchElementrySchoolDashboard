@@ -30,7 +30,13 @@ function StudentNavbar() {
               justifyContent: "center",
             }}
           >
-            <Typography variant="h6">TJ School Dashboard</Typography>
+            <Typography variant="h6">Thomas Jefferson ES Dashboard </Typography>
+            <img
+              src="./slug.png"
+              alt="slug picture"
+              width="50vw"
+              style={{ marginLeft: "10px" }}
+            />
           </div>
           <div
             style={{

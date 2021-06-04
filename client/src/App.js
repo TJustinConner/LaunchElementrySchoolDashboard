@@ -22,6 +22,7 @@ function App() {
         <Route path="/editstudent" component={EditStudentDirectory} />
         <Route path="/calendar" component={CalendarView} />
         <Route path="/editcalendar" component={CalendarEdit} />
+        <Route path="/" exact component={CalendarView} />
       </Switch>
     </div>
   );

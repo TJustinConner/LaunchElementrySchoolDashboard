@@ -6,7 +6,7 @@ app.use(cors());
 const port = 8000;
 
 var admin = require("firebase-admin");
-var serviceAccount = require("./serviceAccountKey.json");
+var serviceAccount = require("./elemdash-firebase-adminsdk-j3uhr-e3660c30a6.json");
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
 });

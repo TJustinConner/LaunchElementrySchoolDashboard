@@ -4,38 +4,23 @@ import TeacherNavbar from "./navbars/teacherNavbar";
 import AdminNavbar from "./navbars/adminNavbar";
 import CalendarView from "./calendar/calendarView";
 import { Route, Switch } from 'react-router-dom';
-import Directory from './components/Directory'
-import EditDirectory from './components/EditDirectory'
+import TeacherDirectory from './components/TeacherDirectory'
+import EditTeacherDirectory from './components/EditTeacherDirectory'
+import StudentDirectory from './components/StudentDirectory'
+import EditStudentDirectory from './components/EditStudentDirectory'
 
 
 function App() {
   return (
     <div>
       <AdminNavbar />
-      <div>
-        <CalendarView />
-      </div>
+
       <Switch>
-        <Route 
-          path="/teacherdir" 
-          render={() => (
-            <Directory type='teacher' isAdmin={false}/>
-        )}/>
-        <Route 
-          path="/studentdir" 
-          render={() => (
-            <Directory type='student' isAdmin={false}/>
-        )}/>
-        <Route 
-          path="/editteacher" 
-          render={() => (
-            <EditDirectory type='teacher'/>
-        )}/>
-        <Route 
-          path="/editstudent" 
-          render={() => (
-            <EditDirectory type='student'/>
-        )}/>
+        <Route path="/teacherdir" component={TeacherDirectory}/>
+        <Route path="/editteacher" component={EditTeacherDirectory}/>
+        <Route path="/studentdir" component={StudentDirectory}/>
+        <Route path="/editstudent" component={EditStudentDirectory}/>
+
       </Switch>
     </div>
   );
